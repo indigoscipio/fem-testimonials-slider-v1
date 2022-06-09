@@ -1,0 +1,214 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $dark-blue;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  background-image: url(../images/pattern-curve.svg);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow-x: hidden;
+
+  @include lg {
+    background-size: 66rem;
+    background-position: bottom left;
+  }
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  padding: 1.6rem;
+  margin: 0;
+  cursor: pointer;
+  border: 0;
+  display: inline-block;
+  background-color: transparent;
+}
+
+//Utilities
+.flex {
+  display: flex;
+  gap: var(--gap, 1.6rem);
+  flex-direction: column;
+  &.flex-center {
+    place-items: center;
+  }
+}
+
+.container {
+  max-width: 111rem;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+}
+
+//Testimonials
+.testimonials {
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  --gap: 9.6rem;
+
+  @include lg {
+    --gap: 1.6rem;
+    text-align: left;
+    flex-direction: row;
+  }
+
+  &__text {
+    order: 2;
+    z-index: 2;
+
+    .quote {
+      margin-bottom: 3.2rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        top: -3.2rem;
+        left: 50%;
+        background-image: url(../images/pattern-quotes.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: translateX(-50%);
+        width: 6.4rem;
+        height: 6.4rem;
+
+        @include lg {
+          top: -6.4rem;
+          left: 9.6rem;
+          width: 12.8rem;
+          height: 12.8rem;
+        }
+      }
+    }
+
+    @include lg {
+      order: 1;
+      flex: 1;
+      min-width: 60%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    order: 1;
+    position: relative;
+    z-index: 1;
+
+    @include lg {
+      order: 2;
+    }
+  }
+
+  &__image-profile {
+    z-index: 1;
+    position: relative;
+    width: 70%;
+
+    @include md {
+      max-width: 60%;
+    }
+
+    @include lg {
+      min-width: 140%;
+    }
+  }
+
+  &__image-pattern {
+    z-index: -1;
+    position: absolute;
+    top: -40px;
+    max-width: 100%;
+    left: -11px;
+
+    @include md {
+      top: -26px;
+      max-width: 80%;
+      left: 29px;
+    }
+
+    @include lg {
+      top: -26px;
+      max-width: 200%;
+      left: -181px;
+    }
+  }
+
+  &__buttons {
+    position: absolute;
+    display: inline-flex;
+    --gap: 1.6rem;
+    bottom: -2.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background-color: white;
+    border-radius: 100px;
+    box-shadow: 0 16px 32px rgba(51, 47, 47, 0.25);
+  }
+
+  &__button {
+    img {
+      max-width: 80%;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
